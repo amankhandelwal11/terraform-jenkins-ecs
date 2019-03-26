@@ -12,6 +12,9 @@
 - Module [`dwp_ecs`] will reuse the previous module to launch ASG instance on ECS cluster and setup Jenkins master as ECS cluster service
 - Setup CI/CD pipeline to invoke automation from Jenkins master on the ECS cluster utilizing [`Amazon EC2 Container Service Plugin`](https://github.com/jenkinsci/amazon-ecs-plugin) and perform cntaineri'zed deployments
 
+## Requirements
+- recommended m4.large EC2 sizing
+- terraform binary installed
 
 ## To create complete stack:
 ```sh

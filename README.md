@@ -16,7 +16,7 @@
 ## To create complete stack:
 ```sh
 git clone https://github.com/kamkarthi/terraform-jenkins-ecs.git terraform-jenkins-ecs.git
-cd terraform-jenkins-ecs.git
+cd terraform-jenkins-ecs.git/modules
 terraform init
 terraform plan
 terrafom apply

@@ -21,6 +21,7 @@ terraform init
 terraform plan
 terrafom apply
 ```
+NOTE: The deployment will take 15 mins for services to have accessible through ELB.
 ## To destroy the stack:
 
 ```sh

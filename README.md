@@ -8,8 +8,8 @@
 
 ## Approach:
 
-- Module [`dwp_ec2`] is written to setup LAMP stack with autoscaling group (ASG) on AWS EC2
-- MOdule [`dwp_ecs`] will reuse the previous module to launch ASG instance on ECS cluster and setup Jenkins master as ECS cluster service
+- Module [`dwp_ec2`] is written to setup LAMP stack on AWS EC2 with autoscaling group (ASG)
+- Module [`dwp_ecs`] will reuse the previous module to launch ASG instance on ECS cluster and setup Jenkins master as ECS cluster service
 - Setup CI/CD pipeline to invoke automation from Jenkins master on the ECS cluster utilizing [`Amazon EC2 Container Service Plugin`](https://github.com/jenkinsci/amazon-ecs-plugin) and perform cntaineri'zed deployments
 
 
@@ -28,7 +28,7 @@ terraform destroy
 ```
 
 ## Outputs:
-At the end of the stack provisioning, outputs will be displayed for the ELB endpoint to acces the respective stacks.
+At the end of the [`terraform apply`], outputs will be displayed with ELB endpoint dns names to access corresponding stacks respectively.
 
 ex: (please use the dns names shown on the screen output)
 

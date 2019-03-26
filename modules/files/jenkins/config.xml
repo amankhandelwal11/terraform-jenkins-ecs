@@ -1,0 +1,73 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<hudson>
+  <disabledAdministrativeMonitors/>
+  <version>2.169</version>
+  <installStateName>RUNNING</installStateName>
+  <numExecutors>2</numExecutors>
+  <mode>NORMAL</mode>
+  <useSecurity>false</useSecurity>
+  <authorizationStrategy class="hudson.security.FullControlOnceLoggedInAuthorizationStrategy">
+    <denyAnonymousReadAccess>true</denyAnonymousReadAccess>
+  </authorizationStrategy>
+  <securityRealm class="hudson.security.HudsonPrivateSecurityRealm">
+    <disableSignup>true</disableSignup>
+    <enableCaptcha>false</enableCaptcha>
+  </securityRealm>
+  <disableRememberMe>false</disableRememberMe>
+  <projectNamingStrategy class="jenkins.model.ProjectNamingStrategy$DefaultProjectNamingStrategy"/>
+  <workspaceDir>${JENKINS_HOME}/workspace/${ITEM_FULL_NAME}</workspaceDir>
+  <buildsDir>${ITEM_ROOTDIR}/builds</buildsDir>
+  <markupFormatter class="hudson.markup.EscapedMarkupFormatter"/>
+  <jdks/>
+  <viewsTabBar class="hudson.views.DefaultViewsTabBar"/>
+  <myViewsTabBar class="hudson.views.DefaultMyViewsTabBar"/>
+  <clouds>
+    <com.cloudbees.jenkins.plugins.amazonecs.ECSCloud plugin="amazon-ecs@1.19">
+      <name>AwsECS</name>
+      <templates>
+        <com.cloudbees.jenkins.plugins.amazonecs.ECSTaskTemplate>
+          <templateName>AwsECS</templateName>
+          <label>ecs</label>
+          <image>cloudbees/jnlp-slave-with-java-build-tools</image>
+          <remoteFSRoot>/home/jenkins</remoteFSRoot>
+          <memory>256</memory>
+          <memoryReservation>128</memoryReservation>
+          <cpu>128</cpu>
+          <subnets></subnets>
+          <securityGroups></securityGroups>
+          <assignPublicIp>false</assignPublicIp>
+          <launchType>EC2</launchType>
+          <networkMode>default</networkMode>
+          <privileged>false</privileged>
+        </com.cloudbees.jenkins.plugins.amazonecs.ECSTaskTemplate>
+      </templates>
+      <credentialsId>aws-creds</credentialsId>
+      <cluster>arn:aws:ecs:eu-west-1:039614740294:cluster/dwp-ecs-cluster</cluster>
+      <regionName>eu-west-1</regionName>
+      <tunnel></tunnel>
+      <jenkinsUrl>http://ip-172-31-26-204.eu-west-1.compute.internal/</jenkinsUrl>
+      <retentionTimeout>1</retentionTimeout>
+      <slaveTimeoutInSeconds>900</slaveTimeoutInSeconds>
+    </com.cloudbees.jenkins.plugins.amazonecs.ECSCloud>
+  </clouds>
+  <quietPeriod>5</quietPeriod>
+  <scmCheckoutRetryCount>0</scmCheckoutRetryCount>
+  <views>
+    <hudson.model.AllView>
+      <owner class="hudson" reference="../../.."/>
+      <name>all</name>
+      <filterExecutors>false</filterExecutors>
+      <filterQueue>false</filterQueue>
+      <properties class="hudson.model.View$PropertyList"/>
+    </hudson.model.AllView>
+  </views>
+  <primaryView>all</primaryView>
+  <slaveAgentPort>50000</slaveAgentPort>
+  <label></label>
+  <crumbIssuer class="hudson.security.csrf.DefaultCrumbIssuer">
+    <excludeClientIPFromCrumb>false</excludeClientIPFromCrumb>
+  </crumbIssuer>
+  <nodeProperties/>
+  <globalNodeProperties/>
+  <noUsageStatistics>true</noUsageStatistics>
+</hudson>

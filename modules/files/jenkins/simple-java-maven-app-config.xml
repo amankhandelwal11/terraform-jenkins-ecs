@@ -1,0 +1,39 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<flow-definition plugin="workflow-job@2.32">
+  <actions>
+    <org.jenkinsci.plugins.pipeline.modeldefinition.actions.DeclarativeJobAction plugin="pipeline-model-definition@1.3.7"/>
+  </actions>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties/>
+  <definition class="org.jenkinsci.plugins.workflow.cps.CpsFlowDefinition" plugin="workflow-cps@2.65">
+    <script>pipeline {
+    agent { label &apos;ecs&apos; }
+    stages {
+
+        stage(CheckoutSCM) {
+        
+            steps {
+                checkout([$class: &apos;GitSCM&apos;, branches: [[name: &apos;*/master&apos;]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: &apos;https://github.com/jenkins-docs/simple-java-maven-app.git&apos;]]])
+            }
+        }
+
+        stage(&apos;Build&apos;) {
+
+          steps {
+            sh &apos;mvn -B -DskipTests clean package&apos;
+          }
+        }
+
+        stage(&apos;Test&apos;) {
+
+          steps {
+            sh &apos;mvn test&apos;
+          }
+        }
+    }
+}</script>
+    <sandbox>true</sandbox>
+  </definition>
+  <triggers/>
+  <disabled>false</disabled>

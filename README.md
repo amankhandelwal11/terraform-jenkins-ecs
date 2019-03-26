@@ -31,5 +31,6 @@ terraform destroy
 At the end of the stack provisioning, outputs will be displayed for the ELB endpoint to acces the respective stacks.
 
 ex: (please use the dns names shown on the screen output)
-`EC2_LAMP_ELB = dwp-alb-1-528138388.eu-west-1.elb.amazonaws.com` (please use the )
-`JENKINS_ELB = dwp-alb-2-225829089.eu-west-1.elb.amazonaws.com`
+
+- `EC2_LAMP_ELB = dwp-alb-1-528138388.eu-west-1.elb.amazonaws.com`
+- `JENKINS_ELB = dwp-alb-2-225829089.eu-west-1.elb.amazonaws.com`
